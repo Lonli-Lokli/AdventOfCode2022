@@ -13,7 +13,9 @@ public static class Run
     public static char? GetInterselection((string left, string right) pair) =>
         pair.left.Intersect(pair.right).Any() ? pair.left.Intersect(pair.right).First() : null;
 
-    public static int GetItemWeight(char? input) => input == null ? 0 : Char.IsLower(input.GetValueOrDefault()) ? (input.GetValueOrDefault() - 'a' + 1) : (26 + GetItemWeight(Char.ToLower(input.GetValueOrDefault())));
+    public static int GetItemWeight(char? input) => input == null ? 0 :
+        Char.IsLower(input.GetValueOrDefault()) ? (input.GetValueOrDefault() - 'a' + 1) :
+        (26 + GetItemWeight(Char.ToLower(input.GetValueOrDefault())));
 
     public static int CalculateDuplicatesWeight(string input) => input.Pipe(
             input => input.Split(Environment.NewLine))

@@ -1,7 +1,5 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode2022", "AdventOfCode2022\AdventOfCode2022.csproj", "{BCEF7BBD-1F12-48F0-950C-EEFA84C4C94F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day_01", "Day_01\Day_01.csproj", "{38023F3B-E886-4FF0-8669-8C659C124DA5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day_02", "Day_02\Day_02.csproj", "{E7A10B3E-487D-4235-BB95-D8C0C324DB51}"
@@ -22,10 +20,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BCEF7BBD-1F12-48F0-950C-EEFA84C4C94F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BCEF7BBD-1F12-48F0-950C-EEFA84C4C94F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BCEF7BBD-1F12-48F0-950C-EEFA84C4C94F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BCEF7BBD-1F12-48F0-950C-EEFA84C4C94F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{38023F3B-E886-4FF0-8669-8C659C124DA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{38023F3B-E886-4FF0-8669-8C659C124DA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38023F3B-E886-4FF0-8669-8C659C124DA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
