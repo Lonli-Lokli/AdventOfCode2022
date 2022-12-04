@@ -21,6 +21,6 @@ public static class Run
                 to: Int32.Parse(row.Split(',')[0].Split('-')[1])),
             second: (from: Int32.Parse(row.Split(',')[1].Split('-')[0]),
                 to: Int32.Parse(row.Split(',')[1].Split('-')[1]))))
-        .Count(row => row.first.to < row.second.from || row.first.from > row.second.to);
+        .Count(row => !(row.first.to < row.second.from || row.first.from > row.second.to));
 
 }
