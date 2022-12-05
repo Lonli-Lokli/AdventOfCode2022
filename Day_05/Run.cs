@@ -6,14 +6,16 @@ namespace Day_05;
 
 public static class Run
 {
-    public static string FirstInput(string input, int numberOfColumns) {
+    public static string FirstInput(string input) {
 
-        var init = new Dictionary<int, Stack<string>>();
-        Enumerable.Range(0, numberOfColumns).ToList().ForEach(n => init[n + 1] = new Stack<string>());
+      
         var strings = input.Split(@"
 
 ");
         var allHeaders = strings[0].Split(Environment.NewLine);
+        var init = new Dictionary<int, Stack<string>>();
+        int numberOfColumns = (allHeaders[0].Length + 1)/4; // THAT'S DONE AFTER COMPLETION!
+        Enumerable.Range(0, numberOfColumns).ToList().ForEach(n => init[n + 1] = new Stack<string>());
         for (var rowId = allHeaders.Length - 1 - 1; rowId >= 0; rowId--)
         {
             for (var columnId = 0; columnId < numberOfColumns; columnId++)
