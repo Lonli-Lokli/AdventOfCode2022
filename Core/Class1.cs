@@ -21,4 +21,13 @@ public static class Helpers
         }
         return hashSet == null ? new List<T>() : hashSet.ToList();
     }
+    
+    public static void ForEachOf<T>(this List<T> input, Action<T, int> action)
+    {
+        for(int i = 0; i < input.Count; i++)
+        {
+            action(input[i], i);
+        }
+    }
+    
 }
