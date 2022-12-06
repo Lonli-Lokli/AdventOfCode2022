@@ -6,4 +6,8 @@
     <ItemGroup Condition="$(MSBuildProjectName.EndsWith('.Tests'))">
         <ProjectReference Include="..\..\$(MSBuildProjectName.Replace('.Tests', ''))\$(MSBuildProjectName.Replace('.Tests', '')).csproj" />
     </ItemGroup>
+
+    <ItemGroup Condition="$(MSBuildProjectName.EndsWith('.Tests')) == 'false' And $(MSBuildProjectName.EndsWith('Core')) == 'false'">
+        <ProjectReference Include="..\Core\Core.csproj" />
+    </ItemGroup>
 </Project>

@@ -1,11 +1,28 @@
+using FluentAssertions;
 using Xunit;
 
 namespace Day_06.Tests;
 
-public class UnitTest1
+public class Day06Tests
 {
-    [Fact]
-    public void Test1()
+    [Theory]
+    [InlineData("bvwbjplbgvbhsrlpgdmjqwftvncz", 5)]
+    [InlineData("nppdvjthqldpwncqszvftbrmjlhg", 6)]
+    [InlineData("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", 10)]
+    [InlineData("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 11)]
+    public void InitialDataOriginal_Test(string input, int res)
     {
+        Run.FirstInput(input).Should().Be(res);
+    }
+    
+    [Theory]
+    [InlineData("mjqjpqmgbljsphdztnvjfqwrcgsmlb", 19)]
+    [InlineData("bvwbjplbgvbhsrlpgdmjqwftvncz", 23)]
+    [InlineData("nppdvjthqldpwncqszvftbrmjlhg", 23)]
+    [InlineData("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", 29)]
+    [InlineData("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 26)]
+    public void InitialDataOriginal2_Test(string input, int res)
+    {
+        Run.SecondInput(input).Should().Be(res);
     }
 }

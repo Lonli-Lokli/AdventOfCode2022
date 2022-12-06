@@ -3,7 +3,7 @@ using Xunit;
 
 namespace Day_05.Tests;
 
-public class UnitTest1
+public class Day05Test
 {
     [Fact]
     public void InitialFirstInput_Test()
