@@ -1,64 +1,18 @@
 using FluentAssertions;
 using Xunit;
 
-namespace Day_07.Tests;
+namespace Day_08.Tests;
 
 public class UnitTest1
 {
     [Fact]
     public void InitialFirstInput_Test()
     {
-        Run.FirstInput(@"$ cd /
-$ ls
-dir a
-14848514 b.txt
-8504156 c.dat
-dir d
-$ cd a
-$ ls
-dir e
-29116 f
-2557 g
-62596 h.lst
-$ cd e
-$ ls
-584 i
-$ cd ..
-$ cd ..
-$ cd d
-$ ls
-4060174 j
-8033020 d.log
-5626152 d.ext
-7214296 k").Should().Be(95437);
-    }
-    
-    [Fact]
-    public void InitialFirstInputFunctional_Test()
-    {
-        Run.FirstInputFunctional(@"$ cd /
-$ ls
-dir a
-14848514 b.txt
-8504156 c.dat
-dir d
-$ cd a
-$ ls
-dir e
-29116 f
-2557 g
-62596 h.lst
-$ cd e
-$ ls
-584 i
-$ cd ..
-$ cd ..
-$ cd d
-$ ls
-4060174 j
-8033020 d.log
-5626152 d.ext
-7214296 k").Should().Be(95437);
+        Run.FirstInput(@"30373
+25512
+65332
+33549
+35390").Should().Be(21);
     }
     
     //[Theory]
@@ -76,29 +30,11 @@ $ ls
     [Fact]
     public void InitialSecondInput_Test()
     {
-        Run.SecondInput(@"$ cd /
-$ ls
-dir a
-14848514 b.txt
-8504156 c.dat
-dir d
-$ cd a
-$ ls
-dir e
-29116 f
-2557 g
-62596 h.lst
-$ cd e
-$ ls
-584 i
-$ cd ..
-$ cd ..
-$ cd d
-$ ls
-4060174 j
-8033020 d.log
-5626152 d.ext
-7214296 k").Should().Be(24933642);
+        Run.SecondInput(@"30373
+25512
+65332
+33549
+35390").Should().Be(8);
     }
     
     // [Theory]

@@ -1,8 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-
-using Day_07;
+using Day_08;
 
 Console.WriteLine($"First: {Run.FirstInput(Input.Data)}");
-Console.WriteLine($"FirstFunctional: {Run.FirstInputFunctional(Input.Data)}");
 Console.WriteLine($"Second: {Run.SecondInput(Input.Data)}");
