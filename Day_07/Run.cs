@@ -1,7 +1,5 @@
 ﻿// Copyright (c) 2019 under MIT license.
 
-using System.Collections.Immutable;
-
 namespace Day_07;
 
 public static class Run

@@ -1,7 +1,5 @@
 ﻿// Copyright (c) 2019 under MIT license.
 
-using Core;
-
 namespace Day_03;
 using static Core.Helpers;
 

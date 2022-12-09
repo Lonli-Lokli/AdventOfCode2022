@@ -1,7 +1,5 @@
 ﻿// Copyright (c) 2019 under MIT license.
 
-using Core;
-
 namespace Day_05;
 
 public static class Run

@@ -1,7 +1,5 @@
 ﻿// Copyright (c) 2019 under MIT license.
 
-using System.Runtime.InteropServices;
-
 namespace Day_04;
 
 public static class Run

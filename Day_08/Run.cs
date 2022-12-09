@@ -1,7 +1,5 @@
 ﻿// Copyright (c) 2019 under MIT license.
 
-using System.Data;
-
 namespace Day_08;
 
 public class Run
