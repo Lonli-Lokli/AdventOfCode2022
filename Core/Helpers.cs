@@ -48,5 +48,8 @@ public static class Helpers
             return item;
         });
     }
-    
+
+    public static string JoinAll(this IEnumerable<string> source, string? delimeter = null) =>
+        string.Join(delimeter ?? Environment.NewLine, source);
+
 }

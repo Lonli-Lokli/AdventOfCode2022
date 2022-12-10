@@ -51,7 +51,7 @@ public static class Run
 
     public enum Command  { noop, addx };
 
-    public static string SecondInput(string input) => string.Join(Environment.NewLine, input.Split(Environment.NewLine)
+    public static string SecondInput(string input) => input.Split(Environment.NewLine)
         .Select(row => row.Split(" "))
         .Select(row => new { cmd = Enum.Parse<Command>(row[0]), args = row.Length > 1 ? Int32.Parse(row[1]) : -1 })
         .Aggregate(
@@ -61,7 +61,8 @@ public static class Run
                 Command.noop => DrawNoop(acc.crt, acc.register, acc.cycle),
                 Command.addx => DrawAddx(exec.args, acc.crt, acc.register, acc.cycle),
                 _ => throw new ArgumentOutOfRangeException()
-            }).crt.Chunk(40).Select(chunk => string.Join("", chunk)));
+            }).crt.Chunk(40).Select(chunk => string.Join("", chunk))
+        .JoinAll();
 
 
     private static dynamic DrawNoop(List<string> crt, int register, int cycle) => new
