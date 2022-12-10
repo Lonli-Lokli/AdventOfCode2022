@@ -29,5 +29,24 @@ public static class Helpers
             action(input[i], i);
         }
     }
+
+    public static IEnumerable<T> Tap<T>(this IEnumerable<T> source, Action<T> action)
+    {
+        if (source is null)
+        {
+            throw new InvalidOperationException("Cannot tap on null source");
+        }
+        
+        if (action is null)
+        {
+            throw new InvalidOperationException("Cannot tap with null action");
+        }
+
+        return source.Select(item =>
+        {
+            action(item);
+            return item;
+        });
+    }
     
 }
