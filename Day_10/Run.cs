@@ -61,7 +61,7 @@ public static class Run
                 Command.noop => DrawNoop(acc.crt, acc.register, acc.cycle),
                 Command.addx => DrawAddx(exec.args, acc.crt, acc.register, acc.cycle),
                 _ => throw new ArgumentOutOfRangeException()
-            }).crt.Chunk(40).Select(chunk => string.Join("", chunk))
+            }).crt.Chunk(40).JoinAll()
         .JoinAll();
 
 
