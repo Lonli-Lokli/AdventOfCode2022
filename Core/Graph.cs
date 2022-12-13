@@ -6,7 +6,15 @@ using System.Diagnostics;
 namespace Core;
 
 [DebuggerDisplay("Value: {Value}")]
-public record GraphNode<T>(T Value);
+public class GraphNode<T>
+{
+    public T Value { get; private set; }
+
+    public GraphNode(T value)
+    {
+        Value = value;
+    }
+};
 
 public class Graph<T> : IEnumerable<GraphNode<T>>
 {
@@ -32,7 +40,7 @@ public class Graph<T> : IEnumerable<GraphNode<T>>
     IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
     public IEnumerable<GraphNode<T>> GetNeighbours(GraphNode<T> node) =>
-        _adjacency.ContainsKey(node) ? _adjacency[node].ToList() : Enumerable.Empty<GraphNode<T>>();
+        _adjacency.ContainsKey(node) ? _adjacency[node] : Enumerable.Empty<GraphNode<T>>();
 }
 
 public static class GraphHelpers
