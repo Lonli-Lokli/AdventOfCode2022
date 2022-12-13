@@ -151,8 +151,7 @@ noop
 noop
 addx -25
 noop
-noop
-").Should().Be(14060);
+noop").Should().Be(14060);
     }
     
     //[Theory]
