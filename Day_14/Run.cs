@@ -1,7 +1,5 @@
 ﻿// Copyright (c) 2019 under MIT license.
 
-using System.Drawing;
-using System.Numerics;
 using Core;
 using OneOf;
 using OneOf.Types;
@@ -12,7 +10,7 @@ public static class Run
 {
     public static object FirstInput(string input)
     {
-        var cave = new Cave(BuildRocks(input), new Address(500, 0), false);
+        var cave = new Cave(input, new Address(500, 0), false);
         while (!cave.IsFull)
         {
             cave.AddSand();
@@ -20,25 +18,10 @@ public static class Run
 
         return cave.SandItems;
     }
-
-    public static HashSet<Rock> BuildRocks(string input) =>
-        input.Split(Environment.NewLine)
-            .Select(line => line.Split(" -> ").Select(coord => (
-                from: Int32.Parse(coord.Split(",")[0]),
-                to: Int32.Parse(coord.Split(",")[1]))))
-            .Aggregate(new HashSet<Rock>(), (rocks, lineCoords) =>
-                rocks.Concat(lineCoords.Zip(lineCoords.Skip(1), BuildSequence)
-                        .Aggregate(new HashSet<Rock>(), (lineRocks, seq) => lineRocks.Concat(seq).ToHashSet()))
-                    .ToHashSet());
-    
-    public static IEnumerable<Rock> BuildSequence((int from, int to) x, (int from, int to) y) =>
-        x.from == y.from
-            ? Enumerable.Range(Math.Min(x.to, y.to), Math.Abs(y.to - x.to) + 1).Select(p => new Rock(x.from, p))
-            : Enumerable.Range(Math.Min(x.from, y.from), Math.Abs(y.from - x.from) + 1).Select(p => new Rock(p, x.to));
 
     public static object SecondInput(string input)
     {
-        var cave = new Cave(BuildRocks(input), new Address(500, 0), true);
+        var cave = new Cave(input, new Address(500, 0), true);
         while (!cave.IsFull)
         {
             cave.AddSand();
@@ -46,7 +29,6 @@ public static class Run
 
         return cave.SandItems;
     }
-    
 }
 
 public record Address(int X, int Y)
@@ -57,6 +39,7 @@ public record Address(int X, int Y)
 };
 public record Rock(int X, int Y);
 public record Sand();
+
 public class Cave
 {
     private readonly int _maxRows;
@@ -65,9 +48,10 @@ public class Cave
     public int SandItems => _items.Values.Count(v => v.IsT1);
     public bool IsFull { get; private set; }
 
-    public Cave(HashSet<Rock> rocks, Address entryPoint, bool hasFloor)
+    public Cave(string input, Address entryPoint, bool hasFloor)
     {
         _entryPoint = entryPoint;
+        var rocks = BuildRocks(input);
         var allRocks = hasFloor
             ? rocks.Concat(Enumerable.Range(0, 1000).Select(n => new Rock(n, rocks.Max(r => r.Y) + 2))).ToHashSet()
             : rocks;
@@ -99,6 +83,21 @@ public class Cave
         OccupyAddress(_entryPoint);
 
     }
+    
+    private static HashSet<Rock> BuildRocks(string input) =>
+        input.Split(Environment.NewLine)
+            .Select(line => line.Split(" -> ").Select(coord => (
+                from: Int32.Parse(coord.Split(",")[0]),
+                to: Int32.Parse(coord.Split(",")[1]))))
+            .Aggregate(new HashSet<Rock>(), (rocks, lineCoords) =>
+                rocks.Concat(lineCoords.Zip(lineCoords.Skip(1), BuildSequence)
+                        .Aggregate(new HashSet<Rock>(), (lineRocks, seq) => lineRocks.Concat(seq).ToHashSet()))
+                    .ToHashSet());
+    
+    private static IEnumerable<Rock> BuildSequence((int from, int to) x, (int from, int to) y) =>
+        x.from == y.from
+            ? Enumerable.Range(Math.Min(x.to, y.to), Math.Abs(y.to - x.to) + 1).Select(p => new Rock(x.from, p))
+            : Enumerable.Range(Math.Min(x.from, y.from), Math.Abs(y.from - x.from) + 1).Select(p => new Rock(p, x.to));
     
     private void OccupyAddress(Address address)
     {

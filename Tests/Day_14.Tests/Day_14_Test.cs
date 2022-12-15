@@ -27,7 +27,8 @@ public class UnitTest1
     [Fact]
     public void InitialSecondInput_Test()
     {
-        Run.SecondInput(@"").Should().Be(140);
+        Run.SecondInput(@"498,4 -> 498,6 -> 496,6
+503,4 -> 502,4 -> 502,9 -> 494,9").Should().Be(93);
     }
     
     // [Theory]
